@@ -13,3 +13,7 @@ if (content.style.display === "block") {
 }
 });
 }
+
+$('.navbar-collapse a').click(function(){
+  $(".navbar-collapse").collapse('hide');
+});
