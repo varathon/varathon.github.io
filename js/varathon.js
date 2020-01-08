@@ -1,4 +1,6 @@
 
+/*for openning the text box when the collapsible bar is clicked*/
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -14,6 +16,17 @@ if (content.style.display === "block") {
 });
 }
 
+/*to close collapsible navbar once clicked*/
 $('.navbar-collapse a').click(function(){
   $(".navbar-collapse").collapse('hide');
 });
+
+
+/*send email*/
+function sendemail()
+{
+        var email = "contact.varathon@gmail.com";
+        var subject = document.getElementById("form-Subject").value"";
+        var body = document.getElementById("form-text").value"";
+        document.write('<a href="mailto:' + email + '?subject=' +subject+ '&body=' +body+ '">' + 'Envoyer votre message' + '<'+'/a>');
+};
