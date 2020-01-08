@@ -26,7 +26,7 @@ $('.navbar-collapse a').click(function(){
 function sendemail()
 {
         var email = "contact.varathon@gmail.com";
-        var subject = document.getElementById("form-Subject").value"";
-        var body = document.getElementById("form-text").value"";
+        var subject = document.getElementById("form-Subject").value;
+        var body = document.getElementById("form-text").value;
         document.write('<a href="mailto:' + email + '?subject=' +subject+ '&body=' +body+ '">' + 'Envoyer votre message' + '<'+'/a>');
 };
