@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      body{
+        text-align : center;
+      }
+    </style>
+</head>
+
+<body>
+  <div>
+    <h1> Q&A game</h1>
+    <p>Let's get back to the good old game in which you have to answer two yes/no questions. I'll show you some Javascript features throughout this game. Whenever you are ready, click on the Play button below!</p>
+    <h2 id="score">Score : Ms. Lai : 2 - Mr. X : 1</h2>
+  </div>
+  <div>
+    <button id="playButton" onClick = start()>Play</button>
+    <button onClick = helpFunction()>Help</button>
+  </div>
+
+  <div id="main">
+    <p id="question"></p>
+    <p id="choice" style="display:none" >
+      <button id="choice1" disabled="disabled" onmouseover="mouseOver1()" onmouseout="mouseOut1()" onClick="result(event)">yes</button>
+      <button id="choice2" disabled="disabled" onmouseover="mouseOver2()" onmouseout="mouseOut2()" onClick="result(event)">no</button>
+    </p>
+    <p id ="message"></p>
+  </div>
+  <div id ="map" style="display:none">
+    <p>See you tomorrow at 7pm! I put the address below.
+    </br> (You can try the Help button now if you want to)
+    </p>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.6967636277504!2d2.3474423153041233!3d48.8449225096095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671ef49af9631%3A0x577e46ce988ebd9e!2sAtelier%2072%20-%20Chez%20Poulpo!5e0!3m2!1svi!2sfr!4v1581543172164!5m2!1svi!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+  </div>
+
+  <script>
+    var firstQuestion = true;
+    var score = 1;
+    var question2 = "Great!!! Would you like to have dinner with me tomorrow then?"
+
+    function start(){
+      firstQuestion = true;
+      document.getElementById("question").innerHTML = "Hi Ms. Lai!</br>Are you busy tomorrow evening?";
+      document.getElementById("choice").style.display = "block";
+      document.getElementById("map").style.display = "none";
+      document.getElementById("choice1").disabled = false;
+      document.getElementById("choice2").disabled = false;
+      document.getElementById("message").innerHTML = "";
+    }
+
+    function mouseOver1(){
+      if (firstQuestion){
+        document.getElementById("choice1").innerHTML = "no";
+        document.getElementById("message").innerHTML = "Oops, seems like a bug in my code!!!";
+      }
+    }
+
+    function mouseOut1(){
+      if (firstQuestion){
+        document.getElementById("choice1").innerHTML = "yes";
+        document.getElementById("message").innerHTML = "";
+      }
+    }
+
+    function mouseOver2(){
+      if (!firstQuestion){
+        document.getElementById("question").innerHTML = "Are you sure?";
+        document.getElementById("message").innerHTML = "Seems like another bug..";
+      }
+    }
+
+    function mouseOut2(){
+      if (!firstQuestion){
+        document.getElementById("question").innerHTML = question2;
+        document.getElementById("message").innerHTML = "";
+      }
+    }
+
+    function result(event){
+
+      if (firstQuestion){
+        document.getElementById("question").innerHTML = question2;
+        document.getElementById("message").innerHTML = "";
+        document.getElementById("choice1").innerHTML = "yes";
+        firstQuestion =false;
+      }else{
+        var choice = event.target.innerHTML;
+        if (choice == "yes"){
+          document.getElementById("message").innerHTML = "Nice!";
+        }else{
+          document.getElementById("message").innerHTML = "If you are not sure you don't want it, let's just go for it!";
+        }
+        document.getElementById("question").innerHTML = "";
+        document.getElementById("choice").style.display ="none";
+        document.getElementById("choice1").disabled = true;
+        document.getElementById("choice2").disabled = true;
+        document.getElementById("map").style.display = "block";
+        document.getElementById("playButton").innerHTML = "Play again";
+	   score ++;
+	   localStorage.setItem("score", score);
+	   document.getElementById("score").innerHTML = "Score : Ms. Lai : 2 - Mr. X : " + localStorage.getItem("score");
+      }
+
+    }
+
+	function helpFunction(){
+    if (document.getElementById("map").style.display == "none"){
+      alert("Sorry, can't help you this time! Keep playing!")
+    }else{
+      alert("Don't worry! If you can't go, or if you don't want to, you have until tomorrow morning to fix all the bugs in the code (feel free to add some styling with CSS too) and send it back to me :)")
+    }
+	}
+</script>
+
+</body>
+</html>
