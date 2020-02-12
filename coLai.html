@@ -41,15 +41,19 @@
     var firstQuestion = true;
     var score = 1;
     var question2 = "Great!!! Would you like to have dinner with me tomorrow then?"
-
+    
     function start(){
-      firstQuestion = true;
-      document.getElementById("question").innerHTML = "Hi Ms. Lai!</br>Are you busy tomorrow evening?";
-      document.getElementById("choice").style.display = "block";
-      document.getElementById("map").style.display = "none";
-      document.getElementById("choice1").disabled = false;
-      document.getElementById("choice2").disabled = false;
-      document.getElementById("message").innerHTML = "";
+      if (screen.width<=960){
+        alert('Sorry, this game is playable only on computer.');
+      }else{
+        firstQuestion = true;
+        document.getElementById("question").innerHTML = "Hi Ms. Lai!</br>Are you busy tomorrow evening?";
+        document.getElementById("choice").style.display = "block";
+        document.getElementById("map").style.display = "none";
+        document.getElementById("choice1").disabled = false;
+        document.getElementById("choice2").disabled = false;
+        document.getElementById("message").innerHTML = "";
+      }
     }
 
     function mouseOver1(){
