@@ -44,7 +44,7 @@
     
     function start(){
       if (screen.width<=960){
-        alert('Sorry, this game is playable only on computer.');
+        alert('Sorry Ms. Lai, you have to play it on your laptop.');
       }else{
         firstQuestion = true;
         document.getElementById("question").innerHTML = "Hi Ms. Lai!</br>Are you busy tomorrow evening?";
@@ -105,8 +105,8 @@
         document.getElementById("map").style.display = "block";
         document.getElementById("playButton").innerHTML = "Play again";
 	   score ++;
-	   localStorage.setItem("score", score);
-	   document.getElementById("score").innerHTML = "Score : Ms. Lai : 2 - Mr. X : " + localStorage.getItem("score");
+
+	   document.getElementById("score").innerHTML = "Score : Ms. Lai : 2 - Mr. X : " + score;
       }
 
     }
